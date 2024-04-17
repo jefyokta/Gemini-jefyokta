@@ -1,222 +1,233 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Document</title>
     <style>
-        .wrapper{
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            height: 90vh;
-        }
-        .chat{
-            overflow-y: scroll;
-            overflow-x: scroll;
-        }
-        input{
-            border-radius: 5px;
-            padding: 10px;
-        }
-        .bg-trans{
-            background-color: transparent !important;
-            border-color: #ffffff4f;
-            color: white !important;
-            
-        }
-        .whitspace{
-            white-space: pre;
-        }
-        .psamping{
-            padding-left: 10px !important;
-            padding-right: 10px;
-        }
+      .wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 90vh;
+      }
+      .chat {
+        overflow-y: scroll;
+        overflow-x: scroll;
+      }
+      input {
+        border-radius: 5px;
+        padding: 10px;
+      }
+      .bg-trans {
+        background-color: transparent !important;
+        border-color: #ffffff4f;
+        color: white !important;
+      }
+      .whitspace {
+        white-space: pre;
+      }
+      .psamping {
+        padding-left: 10px !important;
+        padding-right: 10px;
+      }
 
-        span:has(code) {
-            width: 100%;
-            background-color: rgba(100, 100, 100, 0.544);
-            border-top-left-radius: 5px;
-            border-top-right-radius: 5px;
-            margin-top: 5px;
-            padding-top: 10px;
-            padding-bottom: 10px;
-
-        }
-        .bg-root{
-            background-color: rgb(34, 35, 38);
-        }
-        .bg-top{
-            background-color: rgb(23, 23, 23);
-        }
+      span:has(code) {
+        width: 100%;
+        background-color: rgba(100, 100, 100, 0.544);
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        margin-top: 5px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+      }
+      .bg-root {
+        background-color: rgb(34, 35, 38);
+      }
+      .bg-top {
+        background-color: rgb(23, 23, 23);
+      }
     </style>
-    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-</head>
-<body class="bg-root text-light text-wrap position-relative">
-
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.js"
+      integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+      crossorigin="anonymous"></script>
+  </head>
+  <body class="bg-root text-light text-wrap position-relative">
     <div class="shadow-sm p-3 bg-top d-flex justify-content-between">
-
-        <h1 class="text-center text-info">Jefy's Gemini</h1>
-        <div class=" "><button type="button" class="btn btn-outline-warning  p-2  " style="top: 0;" onclick="gantiNama()">Ganti nama</button></div>
-
-    </div>    
-
-
-    <div class="wrapper d-flex container ">
-        <div class="chat" id="chat">
-            <p id="ai"></p>
-            <p id="output"></p>
-        </div>
-        <form id="form" class="input-group mb-5">
-    
-            
-                <input type="text" class="form-control bg-trans" id="promt" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-                <button class="btn btn-outline-secondary" type="submit" id="send">
-
-
-                    <svg fill="#000000" width="30px" height="35px" viewBox="0 0 32 32" id="Outlined" xmlns="http://www.w3.org/2000/svg">
-
-                        <title/>
-                        
-                        <g id="Fill">
-                        
-                        <path d="M28.11,13.32,2.13,2.1,7.44,14.85a3.05,3.05,0,0,1,0,2.3L2.13,29.88l26-11a3,3,0,0,0,0-5.51ZM27.31,17,5.87,26.12l3.41-8.2A4.42,4.42,0,0,0,9.56,17H20V15H9.56a4.42,4.42,0,0,0-.28-.92L5.87,5.9l21.45,9.25a1,1,0,0,1,.6.92A1,1,0,0,1,27.31,17Z"/>
-                        
-                        </g>
-                        
-                        </svg>
-
-                </button>
-         
-
-
-
-        </form>
+      <h1 class="text-center text-info">Jefy's Gemini</h1>
+      <div class=" ">
+        <button
+          type="button"
+          class="btn btn-outline-warning p-2"
+          style="top: 0"
+          onclick="gantiNama()">
+          Ganti nama
+        </button>
+      </div>
     </div>
 
-<script>
-    function gantiNama(){
-    const nama = prompt('masukkan nama')
-    localStorage.setItem('nama',nama)
-}
+    <div class="wrapper d-flex container">
+      <div class="chat" id="chat">
+        <p id="ai"></p>
+        <p id="output"></p>
+      </div>
+      <form id="form" class="input-group mb-5">
+        <input
+          type="text"
+          class="form-control bg-trans"
+          id="promt"
+          aria-describedby="inputGroupFileAddon04"
+          aria-label="Upload" />
+        <button class="btn btn-outline-secondary" type="submit" id="send">
+          <svg
+            fill="#000000"
+            width="30px"
+            height="35px"
+            viewBox="0 0 32 32"
+            id="Outlined"
+            xmlns="http://www.w3.org/2000/svg">
+            <title />
 
-</script>
+            <g id="Fill">
+              <path
+                d="M28.11,13.32,2.13,2.1,7.44,14.85a3.05,3.05,0,0,1,0,2.3L2.13,29.88l26-11a3,3,0,0,0,0-5.51ZM27.31,17,5.87,26.12l3.41-8.2A4.42,4.42,0,0,0,9.56,17H20V15H9.56a4.42,4.42,0,0,0-.28-.92L5.87,5.9l21.45,9.25a1,1,0,0,1,.6.92A1,1,0,0,1,27.31,17Z" />
+            </g>
+          </svg>
+        </button>
+      </form>
+    </div>
+
     <script>
-        $('document').ready(function(e){
-            const setUser = (username) =>{
-            localStorage.setItem('nama',username)
+      function gantiNama() {
+        const nama = prompt("masukkan nama");
+        localStorage.setItem("nama", nama);
+      }
+    </script>
+    <script>
+      $("document").ready(function (e) {
+        const setUser = (username) => {
+          localStorage.setItem("nama", username);
+        };
+
+        if (!localStorage.getItem("nama")) {
+          const user = prompt("siapa namamu?");
+          setUser(user);
         }
 
+        $("form").submit(function (e) {
+          e.preventDefault();
+        });
 
-        if (!localStorage.getItem('nama')) {
-            const user =  prompt('siapa namamu?')
-          setUser(user)
-        }
+        $("#send").click(function () {
+          sendtext();
+        });
 
-            $('form').submit(function(e){
-                e.preventDefault()
-            })
+        const sendtext = async () => {
+          const promt = $("#promt").val();
+          setChat($("#promt").val());
+          $("#promt").val(" ");
 
-            $('#send').click(function(){
-                sendtext()
-            })
+          if (promt !== "") {
+            await $.ajax({
+              url: "https://chat.ai.cneko.org/?t=" + promt,
 
+              success: function (res) {
+                console.log(res);
 
-            const sendtext = ()=>{
-                const promt = $('#promt').val()
-                 setChat($('#promt').val())
-                 $("#promt").val(' ')
+                setResponse(res.response);
+              },
+              error: function (xhr, status, err) {
+                console.error(err);
+                setResponse(
+                  `<p class="text-danger d-flex border border-danger p-2 rounded">
+                                
+                                <i>
+                             <svg height="32" style="overflow:visible;enable-background:new 0 0 32 32" viewBox="0 0 32 32" width="22" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g><g id="Block_8_"><path d="M27.3,4.7c-6.2-6.2-16.4-6.2-22.6,0c-6.2,6.2-6.2,16.4,0,22.6       c6.2,6.2,16.4,6.2,22.6,0C33.6,21.1,33.6,10.9,27.3,4.7z M24.5,7.5c4.2,4.2,4.6,10.7,1.3,15.4L9.1,6.2       C13.7,2.9,20.3,3.3,24.5,7.5z M7.5,24.5C3.3,20.3,2.9,13.7,6.2,9.1l16.7,16.7C18.3,29.1,11.7,28.7,7.5,24.5z" id="Block" style="fill:#FF3939;"/></g></g></svg></i>
+                                
+                                <i>Oops something went wrong..... <br> Try again later..</i></p>`
+                );
+              },
+            });
+          }
+          else{
+            alert('input tidak boleh kosong')
+          }
+        };
 
-            $.ajax({
-            url:'https://chat.ai.cneko.org/?t='+promt,
-            success: function(res){
-            console.log(res)
-
-            
-            setResponse(res.response)
-          
-            },
-            error: function(err){
-                console.log(err)
-                setResponse('<p class="text-danger-emphasis"><i>oops something wrong</i></p>')
+        const setResponse = (text) => {
+          convertext = text.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
+          convertext = convertext.replace(
+            /```(.*?)```/gs,
+            function (match, code) {
+              hasil = code.replace(/</g, "&lt;");
+              hasil = hasil.replace(
+                /\n(.*?)\n/gs,
+                "</span><span class='d-block bg-black p-2 psamping'>$1</span><span class='d-block bg-black p-2 psamping'>"
+              );
+              return (
+                "<code class='bg-dark rounded-circle whitespace codetag '>" +
+                hasil +
+                "</code><span class='d-block  p-2 psamping'>"
+              );
             }
+          );
+          convertext = convertext.replace(/<\?/g, "&lt;?");
 
-            })
-         
-      
+          convertext = convertext.replace(
+            /\n(.*?)\n/gs,
+            "</span><span class='d-block p-2 psamping'>$1</span><span class='d-block  psamping'>"
+          );
 
-            }
+          let respon = `<pre class="text-wrap">` + convertext + `</pre>`;
+          let ai = `<hr><p class="text-danger">Jefy's Gemini</p>`;
 
-        const setResponse = (text)=>{
-           convertext =  text.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
-           convertext = convertext.replace(/```(.*?)```/gs,function(match, code){
-                hasil = code.replace(/</g,"&lt;")
-                hasil = hasil.replace(/\n(.*?)\n/gs,"</span><span class='d-block bg-black p-2 psamping'>$1</span><span class='d-block bg-black p-2 psamping'>")
-                return "<code class='bg-dark rounded-circle whitespace codetag '>" + hasil +"</code><span class='d-block  p-2 psamping'>"
-           })
-           convertext = convertext.replace(/<\?/g,"&lt;?")
-        
-           convertext = convertext.replace(/\n(.*?)\n/gs,"</span><span class='d-block p-2 psamping'>$1</span><span class='d-block  psamping'>")
+          $("#chat").append(ai, respon);
+        };
 
+        const setChat = (text) => {
+          const lnama = localStorage.getItem("nama");
+          const nama = lnama ? lnama : "YOU";
 
-          let respon = `<pre class="text-wrap">`+convertext+`</pre>`
-          let ai= `<hr><p class="text-danger">Jefy's Gemini</p>`
-         
-            $("#chat").append(ai,respon)
-            }
-
-
-            const setChat = (text)=>{
-                const lnama = localStorage.getItem('nama')
-                const nama  = lnama ? lnama : 'YOU'
-              
-          chatbox = `
+          chatbox =
+            `
           <div>
             <p class="text-success">
-                `+nama+`
+                ` +
+            nama +
+            `
             </p>
             <p>
-                `+text+`
+                ` +
+            text +
+            `
             </p>
         </div>
-          `
+          `;
 
+          $("#chat").append(chatbox);
+        };
 
-            $("#chat").append(chatbox)
-
+        function getCodebox() {
+          const spans = document.querySelectorAll("span");
+          spans.forEach((span) => {
+            if (span.querySelector("code")) {
+              span.classList.add("styled-span");
+            } else {
+              console.log("Menunggu elemen .codetag...");
+              setTimeout(getCodebox, 1000);
             }
+          });
+        }
 
-
-
-function getCodebox() {
-
-   
-const spans = document.querySelectorAll('span');
-spans.forEach(span => {
-    if (span.querySelector('code')) {
-
-        span.classList.add('styled-span');
-    }
-    else {
-        console.log('Menunggu elemen .codetag...');
-        setTimeout(getCodebox, 1000);
-    }
-});
-
-}
-
-getCodebox();
-
-
-
-
-
-
-        })
-
+        getCodebox();
+      });
     </script>
-    
-</body>
+  </body>
 </html>
